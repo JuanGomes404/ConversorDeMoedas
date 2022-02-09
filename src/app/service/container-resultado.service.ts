@@ -13,8 +13,8 @@ export class ContainerResultadoService{
    moedaFrom: string;
    moedaTo: string;
    amount: number;
-   rate: number;
-   date: any;
+   rate!: number;
+   date!: any;
 
   constructor( cvsResultado: ConversorResposta){
       this.resultadoConversao = cvsResultado.resultadoConversao;
@@ -30,7 +30,7 @@ export class ContainerResultadoService{
 
 
      this.resultadoConversao = resultado.result;
-     // console.log('Resultado: '+this.resultadoConversao)
+     console.log('Resultado: '+ resultado.result)
 
      this.moedaFrom = resultado.query.from;
       //console.log('Moeda From: '+this.moedaFrom)

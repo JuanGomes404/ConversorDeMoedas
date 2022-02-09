@@ -3,9 +3,7 @@ import { Conversao } from './../container/conversao';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ConversorService {
   selectedOptionMoedaAtual: string = '';
   selectedOptionMoedaConverter = '';
@@ -17,10 +15,7 @@ export class ConversorService {
 
   converteMoeda(conversao: Conversao) {
     return this.http.get<Object>(
-      this.API +
-        `from=${conversao.selectedOptionMoedaAtual}
-    &to=${conversao.selectedOptionMoedaConverter}
-    &amount=${conversao.valor}`
+      this.API +`from=${conversao.selectedOptionMoedaAtual}&to=${conversao.selectedOptionMoedaConverter}&amount=${conversao.valor}`
     );
   }
 }

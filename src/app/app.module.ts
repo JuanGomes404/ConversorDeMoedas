@@ -14,6 +14,7 @@ import { ContainerComponent } from './container/container.component';
 import { ContainerResultadoComponent } from './container/container-resultado/container-resultado.component';
 import { FormsModule } from '@angular/forms';
 import { Conversao } from './container/conversao';
+import { ConversorService } from './service/conversor.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { Conversao } from './container/conversao';
     ContainerResultadoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [MoedasService, Conversao, ConversorResposta],
+  providers: [MoedasService, Conversao, ConversorResposta, ContainerResultadoService, ConversorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
