@@ -4,14 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContainerComponent } from './container/container.component';
 
 const routes: Routes = [
-
-  {path: 'result', component: ContainerResultadoComponent},
-  {path: '**', component: ContainerComponent}
-
+  { path: 'result', component: ContainerResultadoComponent },
+  { path: '**', component: ContainerComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

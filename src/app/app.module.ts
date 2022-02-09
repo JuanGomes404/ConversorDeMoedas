@@ -15,25 +15,15 @@ import { ContainerResultadoComponent } from './container/container-resultado/con
 import { FormsModule } from '@angular/forms';
 import { Conversao } from './container/conversao';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ContainerComponent,
-    ContainerResultadoComponent
-
+    ContainerResultadoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [MoedasService, Conversao, ConversorResposta],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

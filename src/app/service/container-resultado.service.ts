@@ -1,6 +1,6 @@
 import { ConversorResposta } from './../container/container-resultado/conversor-resposta';
 import { Injectable } from "@angular/core"
-import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -12,9 +12,9 @@ export class ContainerResultadoService{
    resultadoConversao: number;
    moedaFrom: string;
    moedaTo: string;
-   amount!: number;
-   rate!: number;
-   date!: any;
+   amount: number;
+   rate: number;
+   date: any;
 
   constructor( cvsResultado: ConversorResposta){
       this.resultadoConversao = cvsResultado.resultadoConversao;
@@ -29,13 +29,13 @@ export class ContainerResultadoService{
 
 
 
-      this.resultadoConversao = resultado.result;
+     this.resultadoConversao = resultado.result;
      // console.log('Resultado: '+this.resultadoConversao)
 
-      this.moedaFrom = resultado.query.from;
+     this.moedaFrom = resultado.query.from;
       //console.log('Moeda From: '+this.moedaFrom)
 
-      this.moedaTo = resultado.query.to;
+     this.moedaTo = resultado.query.to;
      // console.log('Moeda TO: '+this.moedaTo)
 
      this.amount = resultado.query.amount;

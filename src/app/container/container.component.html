@@ -1,42 +1,36 @@
 <section class="container">
-
-
   <section class="form">
-
-
+    <section class="container-sm">
+      <p>Converter de</p>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Valor:</span
+        >
+        <input type="number" class="form-control" [(ngModel)]="cvs.valor" />
+      </div>
+      <p>Selecione a moeda:</p>
+      <select
+        class="form-select combobox"
+        [(ngModel)]="cvs.selectedOptionMoedaAtual"
+      >
+        <option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
+          {{ moeda.descricao }} - {{ moeda.symbols }}
+        </option>
+      </select>
+    </section>
 
     <section class="container-sm">
-            <p>Converter de</p>
-            <div class="input-group input-group-sm mb-3 ">
-                <span class="input-group-text " id="inputGroup-sizing-default">Valor:</span>
-                <input type="number" class="form-control" [(ngModel)] = "cvs.valor">
-            </div>
-            <p>Selecione a moeda:</p>
-            <select class="form-select combobox" [(ngModel)]="cvs.selectedOptionMoedaAtual">
+      <p>Para:</p>
+      <select
+        class="form-select combobox"
+        [(ngModel)]="cvs.selectedOptionMoedaConverter"
+      >
+        <option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
+          {{ moeda.descricao }} - {{ moeda.symbols }}
+        </option>
+      </select>
 
-              <option *ngFor ="let moeda of listaMoedas"
-              [value] = "moeda.symbols" > {{moeda.descricao}} - {{moeda.symbols}}
-
-
-              </option>
-            </select>
-          </section>
-
-
-        <section class="container-sm">
-          <p>Para:</p>
-            <select class="form-select combobox" [(ngModel)] ="cvs.selectedOptionMoedaConverter" >
-
-
-              <option *ngFor ="let moeda of listaMoedas"
-              [value] = "moeda.symbols" > {{moeda.descricao}} - {{moeda.symbols}}
-
-              </option>
-            </select>
-
-            <button class="btn" (click) ="converter()">Converter</button>
-
-      </section>
-
-
+      <button class="btn" (click)="converter()">Converter</button>
     </section>
+  </section>
+</section>
