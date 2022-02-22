@@ -16,6 +16,19 @@ import { ContainerResultadoComponent } from './container/container-resultado/con
 import { FormsModule } from '@angular/forms';
 import { Conversao } from './container/conversao';
 
+import { HistoricoComponent } from './historico/historico.component'; // historico de conversoes 
+
+// angular material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule} from '@angular/material/table'; //  table
+import { MatMenuModule } from '@angular/material/menu'; //  menu
+import { MatButtonModule } from '@angular/material/button'; // button
+import { MatIconModule } from '@angular/material/icon'; // icons
+import { MatInputModule } from '@angular/material/input'; //  input
+import { MatSelectModule } from '@angular/material/select'; // select
+import { MatSortModule } from '@angular/material/sort'; // Sort
+import { MatDialogModule } from '@angular/material/dialog'; //  dialog
+
 
 
 
@@ -24,14 +37,27 @@ import { Conversao } from './container/conversao';
     AppComponent,
     HeaderComponent,
     ContainerComponent,
-    ContainerResultadoComponent
+    ContainerResultadoComponent,
+    HistoricoComponent // Historico Component declarado
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // Angular mat Animations test
+    MatMenuModule, // Angular mat modulo do menu
+    MatButtonModule, // Angular mat modulo do button
+    MatIconModule, // Angular mat icons
+    MatTableModule, // Angular mat table
+    MatInputModule, // Angular mat input
+    MatSelectModule, // Angular mat select
+    MatSortModule, // Angular mat sort
+    MatDialogModule // Angular mat dialog
+
+
+
 
   ],
   providers: [MoedasService, Conversao, ConversorResposta, ConversorService],
