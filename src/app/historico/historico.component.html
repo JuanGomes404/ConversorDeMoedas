@@ -1,0 +1,36 @@
+<table mat-table [dataSource]="dataSource" class="container">
+
+  <!-- Numero da conversão -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Data da conversão -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Data da conversão </th>
+    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+  </ng-container>
+
+  <!-- Hora da conversão -->
+  <ng-container matColumnDef="hour">
+    <th mat-header-cell *matHeaderCellDef> Hora da conversão </th>
+    <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+  </ng-container>
+
+  <!-- Converter de -->
+  <ng-container matColumnDef="moedaFrom">
+    <th mat-header-cell *matHeaderCellDef> Moeda selecionada </th>
+    <td mat-cell *matCellDef="let element"> {{element.moedaFrom}} </td>
+  </ng-container>
+
+  <!-- Converter Para -->
+  <ng-container matColumnDef="moedaTo">
+    <th mat-header-cell *matHeaderCellDef> Moeda convertida </th>
+    <td mat-cell *matCellDef="let element"> {{element.moedaTo}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
