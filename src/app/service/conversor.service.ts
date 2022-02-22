@@ -13,12 +13,17 @@ export class ConversorService {
   constructor(private http: HttpClient) {}
 
   API = 'https://api.exchangerate.host/convert?';
-
+  jsonAPI = 'http://localhost:3000/conversoes';
   converteMoeda(conversao: Conversao) {
      this.params = this.http.get<Object>(
       this.API +
         `from=${conversao.selectedOptionMoedaAtual}&to=${conversao.selectedOptionMoedaConverter}&amount=${conversao.valor}`
     );
     return this.params;
+  }
+
+  addHistorico(convert: Conversao, resultado: any){
+
+     return this.params = this.http.post(this.jsonAPI, convert);
   }
 }
