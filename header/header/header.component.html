@@ -1,0 +1,24 @@
+<header>
+  
+  <!-- Mat Menu -->
+<nav>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="mat-button">
+    <mat-icon>list</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>autorenew</mat-icon>
+      <span>Conversor de Moedas</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>house</mat-icon>
+      <span>Portal Icatu Seguros</span>
+    </button>
+  </mat-menu>
+</nav>
+
+<img id="logo" src="/assets/icatu_logo.png">
+<span class="titulo">{{ app.title }}</span>
+
+</header>
+
