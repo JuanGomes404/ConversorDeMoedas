@@ -9,7 +9,5 @@
     <p class="card-text">Taxa de conversão utilizada: {{ _service.rate }}</p>
     <a href="#" class="btn btn-secondary">Nova Conversão</a>
   </div>
-  <div class="text-muted">Data da conversão: {{ _service.date }}</div>
+  <div class="text-muted">Data da conversão: {{ _service.date | dataBr }}</div>
 </div>
-
-

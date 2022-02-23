@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ConversorService } from '../service/conversor.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-container-conversor',
   templateUrl: './container.component.html',
@@ -25,16 +26,16 @@ export class ContainerComponent implements OnInit {
   ngOnInit() {}
 
   converter() {
-    if (this.cvs.valor! < 0 || this.cvs.valor! === 0) {
+    if (this.cvs.valor! < 0 || this.cvs.valor! === 0 || isNaN(this.cvs.valor!)) {
       alert('Insira somente números não-negativos e maiores que zero :)');
-    } else {
+      this.cvs.resetValue();
+    }
+
+    else {
       this.router.navigate(['result']);
       this.service.converteMoeda(this.cvs).subscribe((result: any) => {
         //console.log('API RODANDO! :)');
-        //console.log(result);
-        this.service.addHistorico(this.cvs, result).subscribe(() => {
-          console.log('inseriu la hein');
-        });
+        //console.log(result)
         this.cntResultadoService.organizarResultado(result);
       });
     }

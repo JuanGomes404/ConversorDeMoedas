@@ -1,3 +1,4 @@
+
 import { ConversorService } from './service/conversor.service';
 import { ConversorResposta } from './container/container-resultado/conversor-resposta';
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
@@ -28,6 +29,7 @@ import { MatInputModule } from '@angular/material/input'; //  input
 import { MatSelectModule } from '@angular/material/select'; // select
 import { MatSortModule } from '@angular/material/sort'; // Sort
 import { MatDialogModule } from '@angular/material/dialog'; //  dialog
+import { DataBrPipe } from './data.pipe'; // Filtro pipe para data BR
 
 
 
@@ -38,7 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog'; //  dialog
     HeaderComponent,
     ContainerComponent,
     ContainerResultadoComponent,
-    HistoricoComponent // Historico Component declarado
+    HistoricoComponent, //Historico Component declarado
+    DataBrPipe // Filtro pipe para data BR
 
   ],
   imports: [

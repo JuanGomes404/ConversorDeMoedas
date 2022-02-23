@@ -3,4 +3,7 @@ export class Conversao {
   public selectedOptionMoedaConverter?: string;
   public valor?: number;
 
+  public resetValue() {
+    this.valor == 0;
+  }
 }
