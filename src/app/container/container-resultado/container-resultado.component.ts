@@ -14,4 +14,6 @@ export class ContainerResultadoComponent implements OnInit {
   constructor(public _service:ContainerResultadoService){}
 
   ngOnInit(): void {}
+
+
 }

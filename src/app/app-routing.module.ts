@@ -5,7 +5,7 @@ import { ContainerComponent } from './container/container.component';
 
 const routes: Routes = [
   { path: 'result', component: ContainerResultadoComponent },
-  { path: '**', component: ContainerComponent },
+  { path: '', component: ContainerComponent },
 ];
 
 @NgModule({

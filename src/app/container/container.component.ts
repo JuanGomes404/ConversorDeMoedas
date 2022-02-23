@@ -23,7 +23,9 @@ export class ContainerComponent implements OnInit {
     private cntResultadoService: ContainerResultadoService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+      this.cvs.valor = 0;
+  }
 
   converter() {
     if (this.cvs.valor! < 0 || this.cvs.valor! === 0 || isNaN(this.cvs.valor!)) {
