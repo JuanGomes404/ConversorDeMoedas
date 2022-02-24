@@ -35,20 +35,28 @@ export class ContainerResultadoService {
     //console.log('Resultado: '+ resultado.result)
   }
 
-  getActualHour() {
+  getActualHour(): string {
     let date = new Date();
-    let hora = date.getHours();
-    let min = date.getMinutes();
-    let horaCompleta;
-    if (this.amount > 0) {
-      horaCompleta = `${hora}:${min}`;
+    let horaNum = date.getHours();
+    let minNum = date.getMinutes();
 
+    let hora = horaNum.toString();
+    let min = minNum.toString();
+
+    let horaCompleta!: string;
+    if (this.amount > 0) {
+      if (horaNum < 10) {
+        hora = '0' + hora;
+      }
+      if (minNum < 10) {
+        min = '0' + min;
+      }
+
+      horaCompleta = hora + ':' + min;
     }
     if (this.amount < 0) {
       horaCompleta = '';
-
     }
-
     return horaCompleta;
   }
 
