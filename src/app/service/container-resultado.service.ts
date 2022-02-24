@@ -1,7 +1,5 @@
-import { Observable } from 'rxjs';
 import { ConversorResposta } from '../container-resultado/conversor-resposta';
 import { Injectable } from '@angular/core';
-import { getMatInputUnsupportedTypeError } from '@angular/material/input';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +11,7 @@ export class ContainerResultadoService {
   amount: number;
   rate!: number;
   date!: any;
+  listaHistorico: any[] = [];
   constructor(cvsResultado: ConversorResposta) {
     this.resultadoConversao = cvsResultado.resultadoConversao;
     this.moedaFrom = cvsResultado.moedaFrom;
@@ -23,18 +22,16 @@ export class ContainerResultadoService {
   }
 
   organizarResultado(resultado: any) {
-    this.resultadoConversao = resultado.result;
     this.moedaFrom = resultado.query.from;
     this.moedaTo = resultado.query.to;
     this.amount = resultado.query.amount;
     this.date = resultado.date;
     this.rate = resultado.info.rate;
-
-    //console.log('Moeda TO: '+this.moedaTo)
-    //console.log('Moeda From: '+this.moedaFrom)
-    //console.log('Resultado: '+ resultado.result)
+    this.resultadoConversao = resultado.result;
   }
-
+  adcionar(objResultado: Object){
+    this.listaHistorico.push(objResultado);
+  }
   getActualHour(): string {
     let date = new Date();
     let horaNum = date.getHours();

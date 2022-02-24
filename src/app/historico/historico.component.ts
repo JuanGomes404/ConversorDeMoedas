@@ -1,28 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
-
-export interface Historico {
-  data: string;
-  hora: string;
-  valor: number;
-  moedaFrom: string;
-  moedaTo: string;
-  resultado: number;
-  taxa: number;
-}
-
-let ELEMENT_DATA: Historico[] = [
-  {
-    data: '',
-    hora: '',
-    valor: 0,
-    moedaFrom: '',
-    moedaTo: '',
-    resultado: 0,
-    taxa: 0,
-  }, // Array onde os dados devem ser armazenados.
-];
+import { Historico } from './historico';
 
 @Component({
   selector: 'app-historico',
@@ -39,11 +18,17 @@ export class HistoricoComponent implements OnInit {
     'resultado',
     'taxa',
   ]; // colunas da tabela
-  historico = ELEMENT_DATA;
+
+
 
   constructor(public _service: ContainerResultadoService) {
-    // Consulta os dados no ResultadoService
-  }
+    //this.consultadoHistorico = _service.getHistorico();
 
-  ngOnInit(): void {}
+  }
+  historico = this._service.listaHistorico;
+
+
+  ngOnInit(): void {
+    console.log(this.historico);
+  }
 }
