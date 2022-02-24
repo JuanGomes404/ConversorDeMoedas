@@ -1,5 +1,5 @@
-import { ConversorResposta } from './../conversor-resposta';
-import { ContainerResultadoComponent } from './../container-resultado.component';
+import { ConversorResposta } from '../conversor-resposta';
+import { ContainerResultadoComponent } from '../container-resultado.component';
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 describe(ContainerResultadoComponent.name, () => {

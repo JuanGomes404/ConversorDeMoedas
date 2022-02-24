@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { ConversorResposta } from './../container/container-resultado/conversor-resposta';
+import { ConversorResposta } from '../container-resultado/conversor-resposta';
 import { Injectable } from '@angular/core';
 import { getMatInputUnsupportedTypeError } from '@angular/material/input';
 

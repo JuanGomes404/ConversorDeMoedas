@@ -1,6 +1,6 @@
 
 import { ConversorService } from './service/conversor.service';
-import { ConversorResposta } from './container/container-resultado/conversor-resposta';
+import { ConversorResposta } from './container-resultado/conversor-resposta';
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
 import { MoedasService } from './service/moedas.service';
 
@@ -13,11 +13,11 @@ import { HeaderComponent } from './header/header/header.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ContainerComponent } from './container/container.component';
-import { ContainerResultadoComponent } from './container/container-resultado/container-resultado.component';
+import { ContainerResultadoComponent } from './container-resultado/container-resultado.component';
 import { FormsModule } from '@angular/forms';
 import { Conversao } from './container/conversao';
 
-import { HistoricoComponent } from './historico/historico.component'; // historico de conversoes 
+import { HistoricoComponent } from './historico/historico.component'; // historico de conversoes
 
 // angular material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

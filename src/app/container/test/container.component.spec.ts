@@ -1,4 +1,4 @@
-import { ConversorResposta } from './../container-resultado/conversor-resposta';
+import { ConversorResposta } from '../../container-resultado/conversor-resposta';
 import { MoedasService } from './../../service/moedas.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
