@@ -7,7 +7,7 @@
 
   <!-- Hora da conversão -->
   <ng-container matColumnDef="hora">
-    <th mat-header-cell *matHeaderCellDef>Hora da conversão</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora da conversão</th>
     <td mat-cell *matCellDef="let historico">
       {{ _service.getActualHour() }}
     </td>
