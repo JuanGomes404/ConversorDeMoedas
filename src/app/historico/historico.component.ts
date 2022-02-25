@@ -1,7 +1,8 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
-import { Historico } from './historico';
+
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-historico',
@@ -19,16 +20,14 @@ export class HistoricoComponent implements OnInit {
     'taxa',
   ]; // colunas da tabela
 
+  constructor(public _service: ContainerResultadoService) {}
 
-
-  constructor(public _service: ContainerResultadoService) {
-    //this.consultadoHistorico = _service.getHistorico();
-
-  }
   historico = this._service.listaHistorico;
+  dataSource = new MatTableDataSource(this.historico);
 
 
   ngOnInit(): void {
     console.log(this.historico);
   }
+
 }

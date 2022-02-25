@@ -32,6 +32,11 @@ export class ContainerResultadoService {
   adcionar(objResultado: Object){
     this.listaHistorico.push(objResultado);
   }
+  excluir(item: any){
+   this.listaHistorico.splice(this.listaHistorico.indexOf(item, 1));
+
+   console.log("Novo array: "+this.listaHistorico);
+  }
   getActualHour(): string {
     let date = new Date();
     let horaNum = date.getHours();

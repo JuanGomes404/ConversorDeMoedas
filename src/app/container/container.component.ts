@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ConversorService } from '../service/conversor.service';
 import { Router } from '@angular/router';
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-container-conversor',
@@ -21,12 +23,20 @@ export class ContainerComponent implements OnInit {
     public cvs: Conversao,
     private router: Router,
     private moedasService: MoedasService,
-    private cntResultadoService: ContainerResultadoService
+    private cntResultadoService: ContainerResultadoService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.cvs.valor = 0;
   }
+ openDialog(){
+    const dialogRef = this.dialog.open(DialogContentComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+ }
 
   converter() {
     if (
@@ -37,12 +47,15 @@ export class ContainerComponent implements OnInit {
       alert('Insira somente números não-negativos e maiores que zero :)');
       this.cvs.resetValue();
     } else {
+
+
       this.service.converteMoeda(this.cvs).subscribe((result: any) => {
         //console.log('API RODANDO! :)');
         //console.log(result)
 
 
         this.cntResultadoService.organizarResultado(result);
+
         let resultado = {
           data: this.cntResultadoService.date,
           hora: this.cntResultadoService.getActualHour(),
