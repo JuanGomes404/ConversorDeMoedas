@@ -1,6 +1,7 @@
 import { ConversorResposta } from '../container-resultado/conversor-resposta';
 import { Injectable } from '@angular/core';
-
+import { MatSort } from '@angular/material/sort';
+import { Historico } from '../historico/historico';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,7 +12,8 @@ export class ContainerResultadoService {
   amount: number;
   rate!: number;
   date!: any;
-  listaHistorico: any[] = [];
+  sort!: MatSort;
+  listaHistorico: Historico[] = [];
   constructor(cvsResultado: ConversorResposta) {
     this.resultadoConversao = cvsResultado.resultadoConversao;
     this.moedaFrom = cvsResultado.moedaFrom;
@@ -29,14 +31,15 @@ export class ContainerResultadoService {
     this.rate = resultado.info.rate;
     this.resultadoConversao = resultado.result;
   }
-  adcionar(objResultado: Object){
+  adcionar(objResultado: any) {
     this.listaHistorico.push(objResultado);
   }
-  excluir(item: any){
-   this.listaHistorico.splice(this.listaHistorico.indexOf(item, 1));
+  excluir(item: any) {
+    this.listaHistorico.splice(this.listaHistorico.indexOf(item, 1));
 
-   console.log("Novo array: "+this.listaHistorico);
+    console.log('Novo array: ' + this.listaHistorico);
   }
+
   getActualHour(): string {
     let date = new Date();
     let horaNum = date.getHours();

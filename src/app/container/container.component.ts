@@ -6,7 +6,6 @@ import { Conversao } from './conversao';
 import { Component, Input, OnInit } from '@angular/core';
 import { ConversorService } from '../service/conversor.service';
 import { Router } from '@angular/router';
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
@@ -56,17 +55,17 @@ export class ContainerComponent implements OnInit {
 
         this.cntResultadoService.organizarResultado(result);
 
-        let resultado = {
+        let dadosConversao = {
           data: this.cntResultadoService.date,
           hora: this.cntResultadoService.getActualHour(),
           valor: this.cntResultadoService.amount,
           moedaFrom: this.cntResultadoService.moedaFrom,
           moedaTo: this.cntResultadoService.moedaTo,
-          resultadoC: this.cntResultadoService.resultadoConversao,
+          resultado: this.cntResultadoService.resultadoConversao,
           taxa: this.cntResultadoService.rate
         };
 
-        this.cntResultadoService.adcionar(resultado);
+        this.cntResultadoService.adcionar(dadosConversao);
         this.router.navigate(['result']);
       });
     }

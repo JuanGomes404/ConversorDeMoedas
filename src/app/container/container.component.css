@@ -38,3 +38,12 @@ p{
   background-color: white;
   padding: 15px;
 }
+
+.btn-excluir{
+  float: right;
+  background-color: #550000;
+
+}
+.btn-excluir:hover{
+  border-color:#550000;
+}
