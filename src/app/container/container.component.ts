@@ -29,13 +29,15 @@ export class ContainerComponent implements OnInit {
   ngOnInit() {
     this.cvs.valor = 0;
   }
- openDialog(){
+  openDialog() {
     const dialogRef = this.dialog.open(DialogContentComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.cntResultadoService.excluir();
+      }
     });
- }
+  }
 
   converter() {
     if (
@@ -46,12 +48,9 @@ export class ContainerComponent implements OnInit {
       alert('Insira somente números não-negativos e maiores que zero :)');
       this.cvs.resetValue();
     } else {
-
-
       this.service.converteMoeda(this.cvs).subscribe((result: any) => {
         //console.log('API RODANDO! :)');
         //console.log(result)
-
 
         this.cntResultadoService.organizarResultado(result);
 
@@ -62,7 +61,7 @@ export class ContainerComponent implements OnInit {
           moedaFrom: this.cntResultadoService.moedaFrom,
           moedaTo: this.cntResultadoService.moedaTo,
           resultado: this.cntResultadoService.resultadoConversao,
-          taxa: this.cntResultadoService.rate
+          taxa: this.cntResultadoService.rate,
         };
 
         this.cntResultadoService.adcionar(dadosConversao);

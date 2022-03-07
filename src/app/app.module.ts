@@ -1,7 +1,6 @@
 
 import { ConversorService } from './service/conversor.service';
 import { ConversorResposta } from './container-resultado/conversor-resposta';
-import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
 import { MoedasService } from './service/moedas.service';
 
 import { NgModule } from '@angular/core';

@@ -1,16 +1,24 @@
 <section class="container">
   <section class="form card">
     <section class="container-sm">
-
-
       <mat-form-field class="w-100">
         <mat-label>Valor:</mat-label>
-        <input matInput type="number" min="0" class="form-control" [(ngModel)]="cvs.valor">
+        <input
+          matInput
+          type="number"
+          min="0"
+          class="form-control"
+          [(ngModel)]="cvs.valor"
+        />
       </mat-form-field>
 
       <mat-form-field class="w-100">
         <mat-label>Selecione a moeda:</mat-label>
-        <mat-select disableRipple class="form-select combobox" [(ngModel)]="cvs.selectedOptionMoedaAtual">
+        <mat-select
+          disableRipple
+          class="form-select combobox"
+          [(ngModel)]="cvs.selectedOptionMoedaAtual"
+        >
           <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
             {{ moeda.descricao }} - {{ moeda.symbols }}
           </mat-option>
@@ -19,7 +27,11 @@
 
       <mat-form-field class="w-100">
         <mat-label>Para:</mat-label>
-        <mat-select disableRipple class="form-select combobox" [(ngModel)]="cvs.selectedOptionMoedaConverter">
+        <mat-select
+          disableRipple
+          class="form-select combobox"
+          [(ngModel)]="cvs.selectedOptionMoedaConverter"
+        >
           <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
             {{ moeda.descricao }} - {{ moeda.symbols }}
           </mat-option>

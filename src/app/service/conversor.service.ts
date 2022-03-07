@@ -8,14 +8,14 @@ export class ConversorService {
   selectedOptionMoedaAtual: string = '';
   selectedOptionMoedaConverter = '';
   valor = 0;
-  params:any;
+  params: any;
 
   constructor(private http: HttpClient) {}
 
   API = 'https://api.exchangerate.host/convert?';
 
   converteMoeda(conversao: Conversao) {
-     this.params = this.http.get<Object>(
+    this.params = this.http.get<Object>(
       this.API +
         `from=${conversao.selectedOptionMoedaAtual}&to=${conversao.selectedOptionMoedaConverter}&amount=${conversao.valor}`
     );

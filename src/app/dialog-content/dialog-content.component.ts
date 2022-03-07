@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,15 +6,13 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './dialog-content.component.html',
   styleUrls: ['./dialog-content.style.css'],
 })
+export class DialogContentComponent {
+  constructor(private dialog: MatDialogRef<DialogContentComponent>) {}
 
-export class DialogContentComponent{
-
-  constructor(private dialog:MatDialogRef<DialogContentComponent>){}
-
-  cancelar(){
-      this.dialog.close(false);
+  cancelar() {
+    this.dialog.close(false);
   }
-  excluir(){
+  excluir() {
     this.dialog.close(true);
   }
 }
