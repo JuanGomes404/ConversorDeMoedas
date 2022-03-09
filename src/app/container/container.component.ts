@@ -1,3 +1,4 @@
+import { HistoricoComponent } from './../historico/historico.component';
 import { Historico } from './../historico/historico';
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
 import { MoedasService } from './../service/moedas.service';
@@ -6,8 +7,7 @@ import { Conversao } from './conversao';
 import { Component, Input, OnInit } from '@angular/core';
 import { ConversorService } from '../service/conversor.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+import { makeBindingParser } from '@angular/compiler';
 
 @Component({
   selector: 'app-container-conversor',
@@ -16,45 +16,39 @@ import { DialogContentComponent } from '../dialog-content/dialog-content.compone
 })
 export class ContainerComponent implements OnInit {
   @Input() listaMoedas = this.moedasService.getListaMoedas();
-
+  id: number;
   constructor(
     private service: ConversorService,
     public cvs: Conversao,
     private router: Router,
     private moedasService: MoedasService,
     private cntResultadoService: ContainerResultadoService,
-    private dialog: MatDialog
+    private historico:HistoricoComponent
   ) {}
 
   ngOnInit() {
     this.cvs.valor = 0;
   }
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.cntResultadoService.excluir();
-      }
-    });
+  generateId(){
+   let id = Math.random()*10;
+
+   return id;
   }
-
   converter() {
-    if (
-      this.cvs.valor! < 0 ||
-      this.cvs.valor! === 0 ||
-      isNaN(this.cvs.valor!)
-    ) {
-      alert('Insira somente números não-negativos e maiores que zero :)');
-      this.cvs.resetValue();
-    } else {
+    if(this.cvs.valor == 0 || this.cvs.valor === null || this.cvs.valor === undefined){
+      alert("Insira os dados corretamente");
+    }
+    else{
       this.service.converteMoeda(this.cvs).subscribe((result: any) => {
         //console.log('API RODANDO! :)');
         //console.log(result)
 
         this.cntResultadoService.organizarResultado(result);
 
+
         let dadosConversao = {
+          id: this.generateId(),
           data: this.cntResultadoService.date,
           hora: this.cntResultadoService.getActualHour(),
           valor: this.cntResultadoService.amount,
@@ -69,6 +63,7 @@ export class ContainerComponent implements OnInit {
       });
     }
   }
+  }
 
   /*teste(){
       console.log(this.valor);
@@ -76,4 +71,4 @@ export class ContainerComponent implements OnInit {
       console.log(this.selectedOptionMoedaConverter);
    }
  */
-}
+

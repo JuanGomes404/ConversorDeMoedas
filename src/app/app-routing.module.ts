@@ -3,13 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContainerComponent } from './container/container.component';
 
-const routes: Routes = [
-  { path: 'result', component: ContainerResultadoComponent },
-  { path: '', component: ContainerComponent },
-];
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      [
+        { path: 'result', component: ContainerResultadoComponent },
+        { path: '', component: ContainerComponent },
+      ],
+      { onSameUrlNavigation: 'reload' }
+    ),
+  ],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

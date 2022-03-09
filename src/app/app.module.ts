@@ -62,7 +62,7 @@ import { DataBrPipe } from './data.pipe'; // Filtro pipe para data BR
 
 
   ],
-  providers: [MoedasService, Conversao, ConversorResposta, ConversorService],
+  providers: [MoedasService, Conversao, ConversorResposta, ConversorService, HistoricoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

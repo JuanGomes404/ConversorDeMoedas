@@ -1,6 +1,8 @@
 import { ConversorResposta } from '../container-resultado/conversor-resposta';
 import { Injectable } from '@angular/core';
 import { Historico } from '../historico/historico';
+import { MatTableDataSource } from '@angular/material/table';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -34,18 +36,21 @@ export class ContainerResultadoService {
   adcionar(objResultado: any) {
     this.listaHistorico.push(objResultado);
   }
-  excluir() {
-    console.log(this.listaHistorico);
 
-    this.needReset = true;
-    console.log('excluir');
-    return this.needReset;
+  excluirConversao(id) {
+    for (let i = 0; i < this.listaHistorico.length; i++) {
+      let obj = this.listaHistorico[i];
+      if ((obj.id = id)) {
+          //retira o obj do array
+          this.listaHistorico.splice(--i, 1);
+        break;
+      }
+    }
+
+    console.log(this.listaHistorico);
   }
-  verificaStatusExcluir() {
-    return this.needReset;
-  }
-  returnNormal() {
-    this.needReset = false;
+  getList() {
+    return of(this.listaHistorico);
   }
   getActualHour(): string {
     let date = new Date();

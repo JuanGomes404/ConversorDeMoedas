@@ -1,13 +1,17 @@
+import { MatDialog } from '@angular/material/dialog';
 import {
   Component,
   OnInit,
   ViewChild,
   AfterViewInit,
-  OnChanges,
+  ChangeDetectorRef,
 } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ContainerResultadoService } from 'src/app/service/container-resultado.service';
+import { Historico } from './historico';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+
 @Component({
   selector: 'app-historico',
   templateUrl: './historico.component.html',
@@ -22,27 +26,44 @@ export class HistoricoComponent implements OnInit, AfterViewInit {
     'moedaTo',
     'resultado',
     'taxa',
+    'excluir'
   ]; // colunas da tabela
 
-  dataSource = new MatTableDataSource(this._service.listaHistorico);
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(public _service: ContainerResultadoService) {}
+  @ViewChild('table') table: MatTable<Historico>;
+  dataSource = new MatTableDataSource(this._service.listaHistorico);
+  constructor(
+    public _service: ContainerResultadoService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private matDialog: MatDialog
+  ) {}
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    this.atualizarExclusao();
   }
-  ngOnInit(): void {}
-  atualizarExclusao() {
-    if (this._service.verificaStatusExcluir() === true) {
-      this._service.listaHistorico = this._service.listaHistorico.filter(
-        (element, index) => index < this._service.listaHistorico.length - 1
-      );
-      this.dataSource = new MatTableDataSource(this._service.listaHistorico);
-      console.log('passou aqui hein');
-      this._service.returnNormal();
-    } else {
-      return;
-    }
+  openDialog(id) {
+    const dialogRef = this.matDialog.open(DialogContentComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this._service.excluirConversao(id);
+        this.refresh();
+      }
+    });
+  }
+  refresh() {
+    // console.log(this._service.getList());
+    this._service.getList().subscribe((listaHistorico: Historico[]) => {
+      this.dataSource = new MatTableDataSource(listaHistorico);
+      console.log(listaHistorico);
+      this.changeDetectorRef.detectChanges();
+      this.dataSource.sort = this.sort;
+
+    });
+    this.table.renderRows();
+    // console.log(this.dataSource);
+  }
+  ngOnInit(): void {
+    this.refresh();
   }
 }
