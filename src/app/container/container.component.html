@@ -19,8 +19,8 @@
           class="form-select combobox"
           [(ngModel)]="cvs.selectedOptionMoedaAtual"
         >
-          <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
-            {{ moeda.descricao }} - {{ moeda.symbols }}
+          <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.code">
+            {{ moeda.description }} - {{ moeda.code }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -32,8 +32,8 @@
           class="form-select combobox"
           [(ngModel)]="cvs.selectedOptionMoedaConverter"
         >
-          <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.symbols">
-            {{ moeda.descricao }} - {{ moeda.symbols }}
+          <mat-option *ngFor="let moeda of listaMoedas" [value]="moeda.code">
+            {{ moeda.description }} - {{ moeda.code }}
           </mat-option>
         </mat-select>
       </mat-form-field>
