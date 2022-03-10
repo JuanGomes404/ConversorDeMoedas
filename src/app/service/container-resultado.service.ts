@@ -38,11 +38,13 @@ export class ContainerResultadoService {
   }
 
   excluirConversao(id) {
+    console.log(id);
     for (let i = 0; i < this.listaHistorico.length; i++) {
       let obj = this.listaHistorico[i];
-      if ((obj.id = id)) {
+      console.log(obj.id);
+      if ((obj.id === id)) {
           //retira o obj do array
-          this.listaHistorico.splice(--i, 1);
+          this.listaHistorico.splice(i, 1);
         break;
       }
     }
