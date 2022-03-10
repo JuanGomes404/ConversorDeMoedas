@@ -12,7 +12,9 @@ export class HeaderComponent {
       app.title = 'Conversor de Moedas'
    }
 
-
+   redirecionarIcatu(){
+     window.location.assign('https://portal.icatuseguros.com.br');
+   }
 
 
 }
