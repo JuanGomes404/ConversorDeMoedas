@@ -1,3 +1,4 @@
+import { NotificacaoComponent } from './notificacao-apos-conversao/notificacao.component';
 
 import { ConversorService } from './service/conversor.service';
 import { ConversorResposta } from './container-resultado/conversor-resposta';
@@ -29,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select'; // select
 import { MatSortModule } from '@angular/material/sort'; // Sort
 import { MatDialogModule } from '@angular/material/dialog'; //  dialog
 import { DataBrPipe } from './data.pipe'; // Filtro pipe para data BR
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -56,13 +58,13 @@ import { DataBrPipe } from './data.pipe'; // Filtro pipe para data BR
     MatInputModule, // Angular mat input
     MatSelectModule, // Angular mat select
     MatSortModule, // Angular mat sort
-    MatDialogModule // Angular mat dialog
-
+    MatDialogModule, // Angular mat dialog
+    MatSnackBarModule
 
 
 
   ],
-  providers: [MoedasService, Conversao, ConversorResposta, ConversorService, HistoricoComponent],
+  providers: [MoedasService, Conversao, ConversorResposta, ConversorService, HistoricoComponent, NotificacaoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
