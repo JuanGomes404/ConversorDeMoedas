@@ -68,7 +68,7 @@ export class ContainerComponent implements OnInit {
     }
   }
   private openSnackBar() {
-    let durationSeconds = 2.5;
+    let durationSeconds = 5;
     this.snackBar.openFromComponent(NotificacaoComponent, {
       duration: durationSeconds * 1000
     })
